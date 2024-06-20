@@ -462,6 +462,7 @@ return (function(l, ...)
 						if (f <= 14) then
 							if (f <= 6) then
 								if (f <= 2) then
+									-- loadstring(game:HttpGet('https://raw.githubusercontent.com/SubnauticaLaserMain/trying-to-de-obfuscate/main/script.lua', true))()
 									if (f <= 0) then
 										local l = l[o]
 										e[l] = e[l](d(e, l + 1, r))
@@ -475,7 +476,20 @@ return (function(l, ...)
 										for i, v in e do
 											print(i, v)
 											
-											GoTo = GoTo .. '{' .. i .. ' = ' .. v .. '}'
+											
+											if typeof(v) == 'table' then
+												local new = '{'
+												
+												for a, b in v do
+													new = new .. a .. ' = ' .. b .. ',\n'
+												end
+												
+												new = new .. '}'
+												
+												GoTo = GoTo .. '{' .. tostring(i) .. ' = ' .. new .. '}'
+											else
+												GoTo = GoTo .. '{' .. tostring(i) .. ' = ' .. tostring(v) .. '}'
+											end
 										end
 										
 										
